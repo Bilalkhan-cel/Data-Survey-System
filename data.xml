@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Survey>
+  <Title>Survey Questionnaire</Title>
+  <Description>This survey questionnaire pertains to an independent study which is being conducted in collaboration with Institute of Space Technology (IST) and National University of Science and Technology (NUST). It intends to investigate the effect of supportive university entrepreneurial ecosystem's effect on the entrepreneurial intentions and the role of social intelligence, digital literacy and self-efficacy.</Description>
+  <Section id="1" name="Demographics">
+    <Question id="gender" type="single-choice">
+      <Text>Gender</Text>
+      <Options>
+        <!-- Image support (attribute form): parser reads the optional image="..." -->
+        <Option value="1" image="opt_male.png">Male</Option>
+        <!-- Image support (child-element form): parser reads <Image>...</Image> -->
+        <Option value="2">
+          <Text>Female</Text>
+          <Image>opt_female.png</Image>
+        </Option>
+      </Options>
+    </Question>
+    <Question id="age" type="text">
+      <Text>Age</Text>
+    </Question>
+    <Question id="education" type="single-choice">
+      <Text>Education</Text>
+      <Options>
+        <Option value="1">BS or equivalent</Option>
+        <Option value="2">MS or equivalent</Option>
+        <Option value="3">Ph.D.</Option>
+        <Option value="4" allowsOtherText="true">Other</Option>
+      </Options>
+    </Question>
+    <Question id="university_name" type="text">
+      <Text>Name of the University</Text>
+    </Question>
+    <Question id="university_type" type="single-choice">
+      <Text>Type of University</Text>
+      <Options>
+        <Option value="1">Private Sector</Option>
+        <Option value="2">Public Sector</Option>
+        <Option value="3" allowsOtherText="true">Other</Option>
+      </Options>
+    </Question>
+  </Section>
+  <Section id="2" name="Entrepreneurial Intention">
+    <Options>
+      <Option value="1">Strongly Disagree</Option>
+      <Option value="2">Disagree</Option>
+      <Option value="3">Neutral</Option>
+      <Option value="4">Agree</Option>
+      <Option value="5">Strongly Agree</Option>
+    </Options>
+    <Question id="EI1" type="likert-5">
+      <Text>I am ready to do anything to be an entrepreneur</Text>
+      <AI>yes</AI>
+    </Question>
+    <Question id="EI2" type="likert-5">
+      <Text>My professional goal is to become an entrepreneur</Text>
+    </Question>
+    <Question id="EI3" type="likert-5">
+      <Text>I will make every effort to start and run my own firm</Text>
+      <AI>yes</AI>
+    </Question>
+    <Question id="EI4" type="likert-5">
+      <Text>I am determined to create a firm in the future</Text>
+    </Question>
+    <Question id="EI5" type="likert-5">
+      <Text>I have very seriously thought of starting a firm</Text>
+    </Question>
+    <Question id="EI6" type="likert-5">
+      <Text>I have the firm intention to start a firm some day</Text>
+    </Question>
+  </Section>
+  <Section id="3" name="Supportive University Entrepreneurial Ecosystem">
+    <Options>
+      <Option value="1">Strongly Disagree</Option>
+      <Option value="2">Disagree</Option>
+      <Option value="3">Neutral</Option>
+      <Option value="4">Agree</Option>
+      <Option value="5">Strongly Agree</Option>
+    </Options>
+    <Question id="PES1" type="likert-5">
+      <Text>My university offers elective courses on entrepreneurship</Text>
+    </Question>
+    <Question id="PES2" type="likert-5">
+      <Text>My university offers project work focused on entrepreneurship</Text>
+    </Question>
+    <Question id="PES3" type="likert-5">
+      <Text>My university offers internship focused on entrepreneurship</Text>
+    </Question>
+    <Question id="PES4" type="likert-5">
+      <Text>My university offers a bachelor or master study on entrepreneurship</Text>
+    </Question>
+    <Question id="PES5" type="likert-5">
+      <Text>My university arranges conferences/workshops on entrepreneurship</Text>
+    </Question>
+    <Question id="PES6" type="likert-5">
+      <Text>My university brings entrepreneurial students in contact with each other</Text>
+    </Question>
+    <Question id="PCDS1" type="likert-5">
+      <Text>My university creates awareness of entrepreneurship as a possible career choice</Text>
+    </Question>
+    <Question id="PCDS2" type="likert-5">
+      <Text>My university motivates students to start a new business</Text>
+    </Question>
+    <Question id="PCDS3" type="likert-5">
+      <Text>My university provides students with ideas to start a new business from</Text>
+    </Question>
+    <Question id="PCDS4" type="likert-5">
+      <Text>My university provides students with the knowledge needed to start a new business</Text>
+    </Question>
+    <Question id="PBDS1" type="likert-5">
+      <Text>My university provides students with the financial means to start a new business</Text>
+    </Question>
+    <Question id="PBDS2" type="likert-5">
+      <Text>My university uses its reputation to support students that start a new business</Text>
+    </Question>
+    <Question id="PBDS3" type="likert-5">
+      <Text>My university serves as a lead customer of students that start a new business</Text>
+    </Question>
+  </Section>
+  <Section id="4" name="Entrepreneurial Skills">
+    <Options>
+      <Option value="1">No aptitude at all</Option>
+      <Option value="2">A little aptitude</Option>
+      <Option value="3">Average aptitude</Option>
+      <Option value="4">High aptitude</Option>
+      <Option value="5">Very high aptitude</Option>
+    </Options>
+    <Instruction>How do you rate yourself on the following entrepreneurial abilities/skill sets?</Instruction>
+    <Question id="ES1" type="likert-5">
+      <Text>Recognition of opportunity</Text>
+    </Question>
+    <Question id="ES2" type="likert-5">
+      <Text>Creativity</Text>
+    </Question>
+    <Question id="ES3" type="likert-5">
+      <Text>Problem solving</Text>
+    </Question>
+    <Question id="ES4" type="likert-5">
+      <Text>Leadership and communication skills</Text>
+    </Question>
+    <Question id="ES5" type="likert-5">
+      <Text>Development of new products and services</Text>
+    </Question>
+    <Question id="ES6" type="likert-5">
+      <Text>Networking skills, and making professional contacts</Text>
+    </Question>
+  </Section>
+  <Section id="5" name="Entrepreneurial Self-Efficacy">
+    <Options>
+      <Option value="1">Strongly Disagree</Option>
+      <Option value="2">Disagree</Option>
+      <Option value="3">Neutral</Option>
+      <Option value="4">Agree</Option>
+      <Option value="5">Strongly Agree</Option>
+    </Options>
+    <Question id="ESE1" type="likert-5">
+      <Text>I am confident in my ability to successfully identify new business opportunities</Text>
+    </Question>
+    <Question id="ESE2" type="likert-5">
+      <Text>I am confident in my ability to create new products</Text>
+    </Question>
+    <Question id="ESE3" type="likert-5">
+      <Text>I am confident in my ability to successfully perform the various roles and tasks of entrepreneurship</Text>
+    </Question>
+    <Question id="ESE4" type="likert-5">
+      <Text>I am confident in my ability to successfully commercialize an idea or new development</Text>
+    </Question>
+    <Question id="ESE5" type="likert-5">
+      <Text>I am confident in my ability to think creatively</Text>
+    </Question>
+  </Section>
+  <Section id="6" name="Digital Competencies">
+    <Options>
+      <Option value="1">Strongly Disagree</Option>
+      <Option value="2">Disagree</Option>
+      <Option value="3">Neutral</Option>
+      <Option value="4">Agree</Option>
+      <Option value="5">Strongly Agree</Option>
+    </Options>
+    <Question id="IDL1" type="likert-5">
+      <Text>I can identify and use appropriate sources in digital environments based on my information needs</Text>
+    </Question>
+    <Question id="IDL2" type="likert-5">
+      <Text>I can use search strategies in digital environments</Text>
+    </Question>
+    <Question id="IDL3" type="likert-5">
+      <Text>I can retrieve information that I have stored from different environments</Text>
+    </Question>
+    <Question id="IDL4" type="likert-5">
+      <Text>I can store digital information and data securely</Text>
+    </Question>
+    <Question id="CC1" type="likert-5">
+      <Text>I can communicate using different digital tools</Text>
+    </Question>
+    <Question id="CC2" type="likert-5">
+      <Text>I can edit files and documents collaboratively with others using digital tools</Text>
+    </Question>
+    <Question id="CC3" type="likert-5">
+      <Text>I can apply behavioral rules in digital interactions and collaborations</Text>
+    </Question>
+    <Question id="CC4" type="likert-5">
+      <Text>I can actively participate in society using digital media</Text>
+    </Question>
+    <Question id="CC5" type="likert-5">
+      <Text>I can share my experiences with digital tools in interactions with others</Text>
+    </Question>
+    <Question id="SS1" type="likert-5">
+      <Text>I know about the dangers and risks in digital environments and consider them</Text>
+    </Question>
+    <Question id="SS2" type="likert-5">
+      <Text>I can protect my privacy in digital environments through appropriate measures</Text>
+    </Question>
+    <Question id="SS3" type="likert-5">
+      <Text>I can regularly update my security settings</Text>
+    </Question>
+    <Question id="SS4" type="likert-5">
+      <Text>I can use digital technologies in a healthy way (e.g., limited daily usage, setting boundaries)</Text>
+    </Question>
+    <Question id="PS1" type="likert-5">
+      <Text>I can use digital tools and platforms according to my needs</Text>
+    </Question>
+    <Question id="PS2" type="likert-5">
+      <Text>I can adapt digital tools for personal use</Text>
+    </Question>
+    <Question id="PS3" type="likert-5">
+      <Text>I can independently use digital learning opportunities and appropriate tools</Text>
+    </Question>
+    <Question id="PS4" type="likert-5">
+      <Text>I can organize digital learning resources independently</Text>
+    </Question>
+  </Section>
+</Survey>

@@ -1,0 +1,10 @@
+{
+  "name": "survey-system",
+  "version": "1.0.0",
+  "private": true,
+  "description": "XML-driven survey system (Flask + SQLAlchemy) with a Genially-style UI",
+  "scripts": {
+    "dev": "PORT=3000 .venv/bin/python app.py",
+    "start": "PORT=3000 .venv/bin/python app.py"
+  }
+}

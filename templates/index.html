@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Survey: What Are You Like at School?</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Fredoka:wght@500;600;700&display=swap"
+        rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+    <div class="viewport">
+        <!-- ===== SCREEN: START ===== -->
+        <section class="screen screen--start is-active" data-screen="start">
+            <div class="frame">
+                <div class="deco deco--clouds-tl" aria-hidden="true"></div>
+                <div class="deco deco--diamonds" aria-hidden="true"></div>
+
+                <div class="start-card">
+                    <div class="nav-dots" aria-hidden="true">
+                        <span></span><span></span><span></span>
+                    </div>
+                    <div class="start-card__body">
+                        <div class="start-card__text">
+                            <p class="start-card__eyebrow">{{ title }}</p>
+                            <h1 class="start-card__title">{{ subtitle }}</h1>
+                        </div>
+                        <div class="start-card__photo">
+                            <img
+                                src="{{ url_for('static', filename='img/cover.png') }}"
+                                alt="Two happy students at school"
+                            />
+                        </div>
+                    </div>
+                    <button class="pill-btn" data-action="start">
+                        <span class="pill-btn__arrow" aria-hidden="true"></span>
+                        <span>START</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SCREEN: INTRO ===== -->
+        <section class="screen screen--intro" data-screen="intro">
+            <div class="frame">
+                <div class="deco deco--diamonds deco--diamonds-multi" aria-hidden="true"></div>
+
+                <div class="start-card">
+                    <div class="nav-dots" aria-hidden="true">
+                        <span></span><span></span><span></span>
+                    </div>
+                    <div class="start-card__body">
+                        <div class="start-card__text">
+                            <h2 class="hello-title">HELLO!</h2>
+                            <p class="hello-text">{{ intro }}</p>
+                        </div>
+                        <div class="start-card__photo start-card__photo--clouds">
+                            <div class="clouds-panel" aria-hidden="true"></div>
+                        </div>
+                    </div>
+                    <button class="pill-btn" data-action="begin">
+                        <span class="pill-btn__arrow" aria-hidden="true"></span>
+                        <span>NEXT</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SCREEN: QUESTION ===== -->
+        <section class="screen screen--question" data-screen="question">
+            <div class="frame">
+                <div class="deco deco--diamonds" aria-hidden="true"></div>
+
+                <div class="progress">
+                    <div class="progress__track">
+                        <div class="progress__fill" data-progress-fill></div>
+                    </div>
+                    <span class="progress__label" data-progress-label>0%</span>
+                </div>
+
+                <div class="question-panel">
+                    <span class="question-category" data-question-category></span>
+                    <p class="question-instruction" data-question-instruction hidden></p>
+                    <h2 class="question-title" data-question-title></h2>
+                    <div class="options" data-options></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SCREEN: THANK YOU ===== -->
+        <section class="screen screen--outro" data-screen="outro">
+            <div class="frame">
+                <div class="deco deco--diamonds" aria-hidden="true"></div>
+                <canvas class="confetti" data-confetti aria-hidden="true"></canvas>
+
+                <div class="outro-card">
+                    <div class="nav-dots nav-dots--four" aria-hidden="true">
+                        <span></span><span></span><span></span><span></span>
+                    </div>
+                    <div class="outro-card__photo">
+                        <img
+                            src="{{ url_for('static', filename='img/thankyou.png') }}"
+                            alt="A group of happy smiling children"
+                        />
+                    </div>
+                    <div class="outro-card__body">
+                        <div class="progress progress--full">
+                            <div class="progress__track">
+                                <div class="progress__fill" style="width:100%"></div>
+                            </div>
+                            <span class="progress__label">100%</span>
+                        </div>
+                        <h2 class="outro-title">{{ outro_title }}</h2>
+                        <p class="outro-text">{{ outro_text }}</p>
+                        <button class="pill-btn pill-btn--light" data-action="restart">
+                            <span class="pill-btn__arrow" aria-hidden="true"></span>
+                            <span>RESTART</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/survey.js') }}"></script>
+</body>
+</html>

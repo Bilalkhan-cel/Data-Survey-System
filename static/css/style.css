@@ -1,0 +1,561 @@
+:root {
+    --purple: #9a7ce8;
+    --purple-deep: #8a67e0;
+    --yellow: #f4f43e;
+    --pink: #f81ce5;
+    --pink-soft: #ff5ecf;
+    --ink: #141018;
+    --white: #ffffff;
+    --border: 5px;
+    --radius: 18px;
+    --font-display: "Baloo 2", system-ui, sans-serif;
+    --font-body: "Fredoka", system-ui, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    font-family: var(--font-body);
+    background: var(--purple);
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(12px, 3vw, 40px);
+    min-height: 100dvh;
+}
+
+.viewport {
+    width: 100%;
+    max-width: 1120px;
+}
+
+/* ---------- Slide frame ---------- */
+.screen {
+    display: none;
+}
+.screen.is-active {
+    display: block;
+    animation: pop 0.35s ease;
+}
+
+@keyframes pop {
+    from {
+        opacity: 0;
+        transform: scale(0.985);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.frame {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    background: var(--purple);
+    border: var(--border) solid var(--ink);
+    border-radius: var(--radius);
+    overflow: hidden;
+    padding: clamp(14px, 2.4vw, 30px);
+    display: flex;
+    flex-direction: column;
+}
+
+/* ---------- Decorations ---------- */
+.deco {
+    position: absolute;
+    pointer-events: none;
+    z-index: 0;
+}
+.deco--clouds-tl {
+    top: 0;
+    left: 0;
+    width: 26%;
+    height: 34%;
+    background: var(--pink);
+    border-right: var(--border) solid var(--ink);
+    border-bottom: var(--border) solid var(--ink);
+    background-image: radial-gradient(circle at 25% 60%, #fff 8%, transparent 9%),
+        radial-gradient(circle at 55% 40%, #fff 12%, transparent 13%),
+        radial-gradient(circle at 78% 68%, #fff 9%, transparent 10%),
+        radial-gradient(circle at 40% 80%, #fff 7%, transparent 8%);
+}
+.deco--diamonds {
+    left: clamp(10px, 2vw, 26px);
+    bottom: clamp(10px, 2vw, 22px);
+    width: clamp(90px, 14vw, 170px);
+    height: clamp(120px, 20vw, 240px);
+    background-image: radial-gradient(
+            ellipse 12px 20px at 20% 20%,
+            rgba(255, 255, 255, 0.55) 60%,
+            transparent 62%
+        ),
+        radial-gradient(ellipse 14px 22px at 55% 42%, var(--pink) 60%, transparent 62%),
+        radial-gradient(ellipse 12px 20px at 30% 62%, var(--yellow) 60%, transparent 62%),
+        radial-gradient(ellipse 14px 22px at 62% 78%, var(--pink-soft) 60%, transparent 62%),
+        radial-gradient(ellipse 10px 18px at 18% 88%, var(--yellow) 60%, transparent 62%);
+    background-repeat: no-repeat;
+    opacity: 0.9;
+}
+
+/* ---------- Nav dots ---------- */
+.nav-dots {
+    display: flex;
+    gap: clamp(12px, 2.2vw, 28px);
+    padding: clamp(10px, 1.6vw, 18px) clamp(14px, 2vw, 26px);
+    background: var(--yellow);
+    border-bottom: var(--border) solid var(--ink);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.nav-dots span {
+    width: clamp(22px, 3vw, 34px);
+    height: clamp(22px, 3vw, 34px);
+    border-radius: 50%;
+    background: var(--purple);
+    border: 4px solid var(--ink);
+}
+
+/* ---------- Start / Intro card ---------- */
+.start-card {
+    position: relative;
+    z-index: 1;
+    margin: auto;
+    width: min(88%, 900px);
+    background: var(--yellow);
+    border: var(--border) solid var(--ink);
+    border-radius: 14px;
+    padding-bottom: clamp(18px, 3vw, 34px);
+    box-shadow: 10px 10px 0 rgba(20, 16, 24, 0.25);
+}
+.start-card__body {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: clamp(14px, 2.4vw, 30px);
+    align-items: center;
+    padding: clamp(18px, 3vw, 40px);
+}
+.start-card__eyebrow {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    font-size: clamp(1.1rem, 2.6vw, 2rem);
+    margin-bottom: 0.4rem;
+}
+.start-card__title {
+    font-family: var(--font-display);
+    font-weight: 800;
+    line-height: 0.98;
+    text-transform: uppercase;
+    font-size: clamp(1.6rem, 4.6vw, 3.4rem);
+}
+.start-card__photo {
+    aspect-ratio: 1 / 1;
+    border: var(--border) solid var(--ink);
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--pink);
+    box-shadow: 6px 6px 0 var(--pink);
+}
+.start-card__photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.start-card__photo--clouds {
+    background: var(--pink);
+}
+.clouds-panel {
+    width: 100%;
+    height: 100%;
+    background-color: var(--pink);
+    background-image: radial-gradient(circle at 30% 25%, #ffd9f5 10%, transparent 11%),
+        radial-gradient(circle at 68% 30%, #ffd9f5 14%, transparent 15%),
+        radial-gradient(circle at 25% 62%, #ffd9f5 12%, transparent 13%),
+        radial-gradient(circle at 72% 70%, #ffd9f5 15%, transparent 16%),
+        radial-gradient(circle at 48% 85%, #ffd9f5 11%, transparent 12%);
+}
+
+.hello-title {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(2rem, 6vw, 4rem);
+    margin-bottom: 0.6rem;
+}
+.hello-text {
+    font-size: clamp(0.95rem, 1.8vw, 1.4rem);
+    line-height: 1.5;
+    font-weight: 500;
+}
+
+/* ---------- Pill button ---------- */
+.pill-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 clamp(18px, 3vw, 40px) 0 auto;
+    padding: clamp(12px, 1.6vw, 18px) clamp(22px, 3vw, 40px);
+    background: var(--yellow);
+    border: var(--border) solid var(--ink);
+    border-radius: 999px;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(1rem, 2vw, 1.6rem);
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    color: var(--ink);
+    box-shadow: 4px 4px 0 var(--ink);
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.pill-btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 var(--ink);
+}
+.pill-btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0 var(--ink);
+}
+.pill-btn--light {
+    background: var(--white);
+}
+.pill-btn__arrow {
+    width: clamp(26px, 4vw, 46px);
+    height: 4px;
+    background: var(--ink);
+    position: relative;
+}
+.pill-btn__arrow::after {
+    content: "";
+    position: absolute;
+    right: -2px;
+    top: 50%;
+    width: 12px;
+    height: 12px;
+    border-top: 4px solid var(--ink);
+    border-right: 4px solid var(--ink);
+    transform: translateY(-50%) rotate(45deg);
+}
+
+/* ---------- Progress bar ---------- */
+.progress {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: min(70%, 640px);
+    margin: 0 auto clamp(14px, 2.4vw, 30px);
+}
+.progress__track {
+    position: relative;
+    flex: 1;
+    height: clamp(30px, 4vw, 46px);
+    background: var(--ink);
+    border: var(--border) solid var(--pink);
+    border-radius: 999px;
+    overflow: hidden;
+}
+.progress__fill {
+    height: 100%;
+    width: 0%;
+    background: var(--pink);
+    border-radius: 999px;
+    transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.progress__label {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--font-display);
+    font-weight: 800;
+    color: var(--white);
+    font-size: clamp(0.85rem, 1.6vw, 1.15rem);
+}
+.progress--full .progress__track {
+    border-color: var(--yellow);
+}
+.progress--full .progress__fill {
+    background: var(--yellow);
+}
+.progress--full .progress__label {
+    color: var(--ink);
+}
+
+/* ---------- Question panel ---------- */
+.question-panel {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    background: transparent;
+    border: var(--border) solid var(--ink);
+    border-radius: 12px;
+    padding: clamp(16px, 3vw, 34px);
+    display: flex;
+    flex-direction: column;
+    gap: clamp(16px, 2.6vw, 30px);
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.04);
+}
+.question-title {
+    text-align: center;
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--ink);
+    font-size: clamp(1.1rem, 3vw, 2.1rem);
+    text-wrap: balance;
+}
+
+.options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(12px, 2vw, 26px);
+}
+.option {
+    position: relative;
+    background: var(--yellow);
+    border: var(--border) solid var(--ink);
+    border-radius: 12px;
+    padding: clamp(8px, 1.2vw, 14px);
+    cursor: pointer;
+    text-align: center;
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+    box-shadow: 4px 4px 0 rgba(20, 16, 24, 0.35);
+}
+.option:hover {
+    transform: translateY(-4px);
+    box-shadow: 6px 8px 0 rgba(20, 16, 24, 0.35);
+}
+.option.is-selected {
+    box-shadow: 0 0 0 4px var(--pink), 6px 8px 0 rgba(20, 16, 24, 0.35);
+}
+.option__media {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    border: 4px solid var(--ink);
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--purple);
+}
+.option__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.option__badge {
+    position: absolute;
+    right: -10px;
+    bottom: -10px;
+    width: clamp(28px, 3.4vw, 40px);
+    height: clamp(28px, 3.4vw, 40px);
+    border-radius: 50%;
+    background: var(--white);
+    border: 3px solid var(--ink);
+    display: grid;
+    place-items: center;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(0.8rem, 1.4vw, 1.1rem);
+}
+.option__label {
+    margin-top: clamp(8px, 1.2vw, 14px);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(0.85rem, 1.6vw, 1.3rem);
+}
+
+/* ---------- Outro card ---------- */
+.outro-card {
+    position: relative;
+    z-index: 1;
+    margin: auto;
+    width: min(92%, 960px);
+    background: var(--pink);
+    border: var(--border) solid var(--ink);
+    border-radius: 14px;
+    padding: clamp(18px, 3vw, 40px);
+    display: grid;
+    grid-template-columns: 0.8fr 1.4fr;
+    gap: clamp(16px, 3vw, 36px);
+    align-items: center;
+    box-shadow: 10px 10px 0 rgba(20, 16, 24, 0.25);
+}
+.outro-card .nav-dots--four {
+    position: absolute;
+    top: calc(-1 * var(--border));
+    right: clamp(18px, 4vw, 60px);
+    background: var(--pink-soft);
+    border: var(--border) solid var(--ink);
+    border-top: none;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+.outro-card__photo {
+    aspect-ratio: 1 / 1;
+    border: var(--border) solid var(--ink);
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--yellow);
+    box-shadow: 6px 6px 0 var(--yellow);
+}
+.outro-card__photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.outro-title {
+    font-family: var(--font-display);
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 1;
+    color: var(--white);
+    font-size: clamp(1.6rem, 4.4vw, 3.2rem);
+    margin: 0.8rem 0;
+    text-wrap: balance;
+    text-shadow: 3px 3px 0 rgba(20, 16, 24, 0.35);
+}
+.outro-text {
+    color: var(--white);
+    font-weight: 500;
+    font-size: clamp(0.9rem, 1.7vw, 1.3rem);
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+.outro-card .pill-btn {
+    margin: 0;
+}
+
+.confetti {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* ---------- Question category + instruction (XML section metadata) ---------- */
+.question-category {
+    align-self: center;
+    display: inline-block;
+    padding: clamp(4px, 0.8vw, 8px) clamp(12px, 1.8vw, 20px);
+    background: var(--pink);
+    border: 3px solid var(--ink);
+    border-radius: 999px;
+    font-family: var(--font-display);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--white);
+    font-size: clamp(0.7rem, 1.3vw, 0.95rem);
+    text-align: center;
+}
+.question-instruction {
+    text-align: center;
+    font-family: var(--font-body);
+    font-weight: 500;
+    color: var(--ink);
+    font-size: clamp(0.85rem, 1.5vw, 1.1rem);
+    opacity: 0.85;
+}
+
+/* ---------- Plain choice options (Likert / single-choice, no image) ---------- */
+.options--plain {
+    grid-template-columns: 1fr;
+    max-width: 720px;
+    width: 100%;
+    margin: 0 auto;
+    gap: clamp(10px, 1.4vw, 16px);
+}
+.option--choice {
+    display: flex;
+    align-items: center;
+    gap: clamp(12px, 1.8vw, 20px);
+    text-align: left;
+    padding: clamp(12px, 1.6vw, 18px) clamp(16px, 2vw, 24px);
+}
+.option__badge--inline {
+    position: static;
+    flex: 0 0 auto;
+    width: clamp(30px, 3.4vw, 42px);
+    height: clamp(30px, 3.4vw, 42px);
+    border-radius: 50%;
+    background: var(--white);
+    border: 3px solid var(--ink);
+    display: grid;
+    place-items: center;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(0.85rem, 1.4vw, 1.1rem);
+}
+.option__label--inline {
+    margin-top: 0;
+    flex: 1;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(0.9rem, 1.6vw, 1.25rem);
+}
+
+/* ---------- Free text answer ---------- */
+.text-answer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(14px, 2vw, 22px);
+    width: 100%;
+    max-width: 640px;
+    margin: 0 auto;
+}
+.text-answer__input {
+    width: 100%;
+    padding: clamp(12px, 1.8vw, 18px) clamp(16px, 2vw, 24px);
+    background: var(--white);
+    border: var(--border) solid var(--ink);
+    border-radius: 12px;
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: clamp(1rem, 1.8vw, 1.3rem);
+    color: var(--ink);
+    box-shadow: 4px 4px 0 rgba(20, 16, 24, 0.35);
+    outline: none;
+}
+.text-answer__input:focus {
+    box-shadow: 0 0 0 4px var(--pink), 4px 4px 0 rgba(20, 16, 24, 0.35);
+}
+.text-answer__next {
+    margin: 0;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 720px) {
+    .frame {
+        aspect-ratio: auto;
+        min-height: 80dvh;
+    }
+    .start-card__body,
+    .outro-card {
+        grid-template-columns: 1fr;
+    }
+    .options {
+        grid-template-columns: 1fr;
+    }
+    .deco--clouds-tl {
+        width: 34%;
+        height: 22%;
+    }
+}
