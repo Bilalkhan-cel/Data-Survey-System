@@ -28,7 +28,9 @@ body {
     background: var(--purple);
     color: var(--ink);
     display: flex;
-    align-items: center;
+    /* flex-start + margin:auto on the child keeps content centered when it fits
+       but scrollable from the top when it is taller than the viewport. */
+    align-items: flex-start;
     justify-content: center;
     padding: clamp(12px, 3vw, 40px);
     min-height: 100dvh;
@@ -37,6 +39,7 @@ body {
 .viewport {
     width: 100%;
     max-width: 1120px;
+    margin: auto;
 }
 
 /* ---------- Slide frame ---------- */
@@ -70,6 +73,14 @@ body {
     padding: clamp(14px, 2.4vw, 30px);
     display: flex;
     flex-direction: column;
+}
+
+/* The question screen must never clip long questions or hidden options.
+   Let it grow with its content and scroll the page instead of a fixed canvas. */
+.screen--question .frame {
+    aspect-ratio: auto;
+    min-height: min(78dvh, 620px);
+    overflow: visible;
 }
 
 /* ---------- Decorations ---------- */
@@ -511,7 +522,65 @@ body {
     font-size: clamp(0.9rem, 1.6vw, 1.25rem);
 }
 
-/* ---------- Free text answer ---------- */
+/* ---------- Likert scale as horizontal landscape cards ---------- */
+.options--likert {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: clamp(8px, 1.4vw, 18px);
+    max-width: 100%;
+    width: 100%;
+    margin: 0 auto;
+    align-items: stretch;
+}
+.likert-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(8px, 1vw, 14px);
+    background: var(--yellow);
+    border: var(--border) solid var(--ink);
+    border-radius: 14px;
+    padding: clamp(10px, 1.4vw, 18px) clamp(8px, 1vw, 14px);
+    cursor: pointer;
+    text-align: center;
+    color: var(--ink);
+    box-shadow: 4px 4px 0 rgba(20, 16, 24, 0.35);
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.likert-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 6px 8px 0 rgba(20, 16, 24, 0.35);
+}
+.likert-card.is-selected {
+    box-shadow: 0 0 0 4px var(--pink), 6px 8px 0 rgba(20, 16, 24, 0.35);
+}
+.likert-card__heading {
+    font-family: var(--font-display);
+    font-weight: 800;
+    line-height: 1.05;
+    font-size: clamp(0.8rem, 1.2vw, 1.1rem);
+    text-wrap: balance;
+    min-height: 2.4em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.likert-card__media {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border: 4px solid var(--ink);
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--white);
+}
+.likert-card__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Free text answer */
 .text-answer {
     display: flex;
     flex-direction: column;
@@ -554,8 +623,74 @@ body {
     .options {
         grid-template-columns: 1fr;
     }
+    /* Keep the Likert cards landscape: 3 across on tablets... */
+    .options--likert {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
     .deco--clouds-tl {
         width: 34%;
         height: 22%;
     }
+}
+
+@media (max-width: 480px) {
+    /* ...and 2 across on phones so headings + images stay readable. */
+    .options--likert {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .likert-card__heading {
+        min-height: 0;
+    }
+}
+
+/* ==========================================================================
+   NEW — Selection confirmation feedback (added, nothing above this was
+   changed). Dims the unselected options during the brief pause before the
+   next question, and shows a small toast confirming the answer was saved.
+   Reuses the existing color variables so it matches the current theme.
+   ========================================================================== */
+
+.options.is-locked .option,
+.options.is-locked .likert-card {
+    pointer-events: none;
+    opacity: 0.5;
+    transition: opacity 0.15s ease;
+}
+.options.is-locked .option.is-selected,
+.options.is-locked .likert-card.is-selected {
+    opacity: 1;
+}
+
+.answer-toast {
+    position: fixed;
+    left: 50%;
+    bottom: clamp(18px, 4vw, 40px);
+    transform: translate(-50%, 14px);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: clamp(10px, 1.6vw, 14px) clamp(18px, 2.6vw, 28px);
+    background: var(--ink);
+    color: var(--white);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(0.85rem, 1.5vw, 1.05rem);
+    border: 3px solid var(--yellow);
+    border-radius: 999px;
+    box-shadow: 4px 4px 0 rgba(20, 16, 24, 0.35);
+    z-index: 50;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.18s ease, transform 0.18s ease;
+}
+.answer-toast.is-visible {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+.answer-toast__dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--yellow);
+    flex: 0 0 auto;
 }

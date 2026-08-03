@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Survey>
   <Title>Survey Questionnaire</Title>
-  <Description>This survey questionnaire pertains to an independent study which is being conducted in collaboration with Institute of Space Technology (IST) and National University of Science and Technology (NUST). It intends to investigate the effect of supportive university entrepreneurial ecosystem's effect on the entrepreneurial intentions and the role of social intelligence, digital literacy and self-efficacy.</Description>
+  <Description>This survey questionnaire pertains to an independent study which is being conducted in collaboration with Institute of Space Technology (IST) and National University of Science and Technology (NUST).</Description>
   <Section id="1" name="Demographics">
     <Question id="gender" type="single-choice">
       <Text>Gender</Text>

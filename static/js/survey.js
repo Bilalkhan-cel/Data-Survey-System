@@ -63,6 +63,9 @@
 
     els.questionTitle.textContent = q.text;
     els.options.innerHTML = "";
+    // A fresh question always starts unlocked, in case we arrive here
+    // mid-transition (e.g. via restart).
+    els.options.classList.remove("is-locked");
 
     const existing = state.answers[q.id];
 
@@ -70,6 +73,8 @@
       renderTextInput(q, existing);
     } else if (questionHasImages(q)) {
       renderImageOptions(q, existing);
+    } else if (isLikert(q)) {
+      renderLikertOptions(q, existing);
     } else {
       renderChoiceOptions(q, existing);
     }
@@ -106,7 +111,39 @@
     });
   }
 
-  // ---- Plain choice options (Likert / single-choice without images) ----
+  // ---- Likert scale (rendered as horizontal landscape cards) ----
+  function isLikert(q) {
+    if (q.type && q.type.indexOf("likert") === 0) return true;
+    // Fall back to detecting a 5-point scale without images.
+    return (q.options || []).length === 5 && !questionHasImages(q);
+  }
+
+  function renderLikertOptions(q, existing) {
+    els.options.classList.remove("options--media", "options--plain");
+    els.options.classList.add("options--likert");
+
+    q.options.forEach((opt, i) => {
+      const pos = i + 1; // 1..N maps to scale_1..scale_N imagery
+      const card = document.createElement("button");
+      card.type = "button";
+      card.className = "likert-card";
+      card.dataset.pos = String(pos);
+      if (existing && existing.value === opt.value) {
+        card.classList.add("is-selected");
+      }
+      card.innerHTML = `
+        <div class="likert-card__heading">${opt.label}</div>
+        <div class="likert-card__media">
+          <img src="/static/img/scale_${pos}.png" alt="${opt.label}"
+               onerror="this.style.display='none'" />
+        </div>
+      `;
+      card.addEventListener("click", () => selectOption(q, opt));
+      els.options.appendChild(card);
+    });
+  }
+
+  // ---- Plain choice options (single-choice without images) ----
   function renderChoiceOptions(q, existing) {
     els.options.classList.remove("options--media");
     els.options.classList.add("options--plain");
@@ -159,6 +196,7 @@
         return;
       }
       recordAnswer(q, value);
+      showToast("Answer saved \u2713");
       next();
     };
 
@@ -189,19 +227,50 @@
     };
   }
 
+  // ---------- Selection confirmation toast ----------
+  // Small "your answer was recorded" indicator. Built purely in JS so no
+  // markup elsewhere needs to change; styled via new, additive CSS rules
+  // that reuse the existing color variables.
+  const toast = document.createElement("div");
+  toast.className = "answer-toast";
+  toast.innerHTML =
+    '<span class="answer-toast__dot" aria-hidden="true"></span>' +
+    '<span data-toast-text>Answer saved</span>';
+  document.body.appendChild(toast);
+  let toastTimer = null;
+
+  function showToast(text) {
+    if (toastTimer) clearTimeout(toastTimer);
+    toast.querySelector("[data-toast-text]").textContent = text || "Answer saved";
+    toast.classList.add("is-visible");
+    toastTimer = setTimeout(() => toast.classList.remove("is-visible"), 900);
+  }
+
   function selectOption(question, option) {
+    // Ignore rapid double-taps while a selection is already confirming.
+    if (els.options.classList.contains("is-locked")) return;
+
     recordAnswer(question, option.value);
 
-    els.options.querySelectorAll(".option").forEach((c) => c.classList.remove("is-selected"));
-    els.options.querySelectorAll(".option").forEach((c) => {
-      const label = c.querySelector(".option__label");
+    const selectables = els.options.querySelectorAll(".option, .likert-card");
+    selectables.forEach((c) => c.classList.remove("is-selected"));
+    selectables.forEach((c) => {
+      const label = c.querySelector(".option__label, .likert-card__heading");
       if (label && label.textContent === option.label) {
         c.classList.add("is-selected");
       }
     });
 
-    // Advance shortly after a choice so the selection is visible.
-    setTimeout(next, 380);
+    // Lock the grid (other options dim + stop responding to clicks) and
+    // show the confirmation toast so it's unambiguous the tap registered.
+    els.options.classList.add("is-locked");
+    showToast("Answer saved \u2713");
+
+    // Advance shortly after a choice so the selection + confirmation is visible.
+    setTimeout(() => {
+      els.options.classList.remove("is-locked");
+      next();
+    }, 550);
   }
 
   function next() {

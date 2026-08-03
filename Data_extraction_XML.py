@@ -207,3 +207,7 @@ def extract_full_survey(path):
         return survey
     except Exception as e:
         return {"error": f"Survey Extraction Failed. Error = {e}"}
+    
+    
+    
+# print(extract_full_survey("data.xml")) 

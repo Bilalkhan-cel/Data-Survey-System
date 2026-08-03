@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Survey: What Are You Like at School?</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -31,7 +30,7 @@
                         </div>
                         <div class="start-card__photo">
                             <img
-                                src="{{ url_for('static', filename='img/cover.png') }}"
+                                src="{{ url_for('static', filename='img/cover.gif') }}"
                                 alt="Two happy students at school"
                             />
                         </div>
@@ -116,10 +115,6 @@
                         </div>
                         <h2 class="outro-title">{{ outro_title }}</h2>
                         <p class="outro-text">{{ outro_text }}</p>
-                        <button class="pill-btn pill-btn--light" data-action="restart">
-                            <span class="pill-btn__arrow" aria-hidden="true"></span>
-                            <span>RESTART</span>
-                        </button>
                     </div>
                 </div>
             </div>
