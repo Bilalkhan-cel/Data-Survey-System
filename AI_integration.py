@@ -17,7 +17,7 @@ client=AsyncOpenAI(
 )
 
 model=OpenAIChatCompletionsModel(
-    model="inclusionai/ling-3.0-flash:free",
+    model="inclusionai/ling-3.0-tiny:free",
     openai_client=client
 )
 

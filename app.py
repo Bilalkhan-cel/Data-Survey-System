@@ -18,10 +18,10 @@ app = Flask(__name__)
 
 # Preserve the legacy database logic. Default to a local SQLite file so the app
 # runs out-of-the-box, but honour DATABASE_URL exactly like the old project.
-database_url = os.getenv("DATABASE_URL") or f"sqlite:///{os.path.join(BASE_DIR, 'survey.db')}"
+database_url = os.getenv("DATABASE_URL")
 # SQLAlchemy expects the "postgresql://" scheme (some providers emit "postgres://").
-if database_url.startswith("postgres://"):
-    database_url = database_url.replace("postgres://", "postgresql://", 1)
+# if database_url.startswith("postgres://"):
+#     database_url = database_url.replace("postgres://", "postgresql://", 1)
 
 app.config["SQLALCHEMY_DATABASE_URI"] = database_url
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
