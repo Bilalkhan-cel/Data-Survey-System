@@ -55,7 +55,6 @@
     </Question>
     <Question id="EI3" type="likert-5">
       <Text>I will make every effort to start and run my own firm</Text>
-      <AI>yes</AI>
     </Question>
     <Question id="EI4" type="likert-5">
       <Text>I am determined to create a firm in the future</Text>
