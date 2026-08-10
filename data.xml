@@ -15,7 +15,7 @@
         </Option>
       </Options>
     </Question>
-    <Question id="age" type="number">
+    <Question id="age" type="integer">
       <Text>Age</Text>
     </Question>
     <Question id="education" type="single-choice">
