@@ -49,7 +49,6 @@
     </Options>
     <Question id="EI1" type="likert-5">
       <Text>I am ready to do anything to be an entrepreneur</Text>
-      <AI>yes</AI>
     </Question>
     <Question id="EI2" type="likert-5">
       <Text>My professional goal is to become an entrepreneur</Text>
