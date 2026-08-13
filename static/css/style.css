@@ -326,7 +326,7 @@ body {
     font-family: var(--font-display);
     font-weight: 700;
     color: var(--ink);
-    font-size: clamp(1.7rem, 4.5vw, 3.1rem);
+    font-size: clamp(1.4rem, 3.9vw, 2.7rem);
     text-wrap: balance;
 }
 
