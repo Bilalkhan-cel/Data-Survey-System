@@ -41,11 +41,11 @@
   </Section>
   <Section id="2" name="Entrepreneurial Intention">
     <Options>
-      <Option value="1">Strongly Disagree</Option>
-      <Option value="2">Disagree</Option>
-      <Option value="3">Neutral</Option>
-      <Option value="4">Agree</Option>
-      <Option value="5">Strongly Agree</Option>
+      <Option value="1" image="scale_1.png">Strongly Disagree </Option>
+      <Option value="2" image="scale_2.png">Disagree</Option>
+      <Option value="3" image="scale_3.png">Neutral</Option>
+      <Option value="4" image="scale_4.png">Agree</Option>
+      <Option value="5" image="scale_5.png">Strongly Agree</Option>
     </Options>
     <Question id="EI1" type="likert-5">
       <Text>I am ready to do anything to be an entrepreneur</Text>
@@ -68,11 +68,11 @@
   </Section>
   <Section id="3" name="Supportive University Entrepreneurial Ecosystem">
     <Options>
-      <Option value="1">Strongly Disagree</Option>
-      <Option value="2">Disagree</Option>
-      <Option value="3">Neutral</Option>
-      <Option value="4">Agree</Option>
-      <Option value="5">Strongly Agree</Option>
+      <Option value="1" image="depsad.png">Strongly Disagree </Option>
+      <Option value="2" image="sed.png">Disagree</Option>
+      <Option value="3" image="nu.png">Neutral</Option>
+      <Option value="4" image="hp.png">Agree</Option>
+      <Option value="5" image="happy.png">Strongly Agree</Option>
     </Options>
     <Question id="PES1" type="likert-5">
       <Text>My university offers elective courses on entrepreneurship</Text>
@@ -116,11 +116,11 @@
   </Section>
   <Section id="4" name="Entrepreneurial Skills">
     <Options>
-      <Option value="1">No aptitude at all</Option>
-      <Option value="2">A little aptitude</Option>
-      <Option value="3">Average aptitude</Option>
-      <Option value="4">High aptitude</Option>
-      <Option value="5">Very high aptitude</Option>
+      <Option value="1" image="sad_elmo.png">No aptitude at all</Option>
+      <Option value="2" image="s_elmo.png">A little aptitude</Option>
+      <Option value="3" image="n_elmo.png">Average aptitude</Option>
+      <Option value="4" image="h_elmo.png">High aptitude</Option>
+      <Option value="5" image="happy_elmo.png">Very high aptitude</Option>
     </Options>
     <Instruction>How do you rate yourself on the following entrepreneurial abilities/skill sets?</Instruction>
     <Question id="ES1" type="likert-5">
@@ -144,11 +144,11 @@
   </Section>
   <Section id="5" name="Entrepreneurial Self-Efficacy">
     <Options>
-      <Option value="1">Strongly Disagree</Option>
-      <Option value="2">Disagree</Option>
-      <Option value="3">Neutral</Option>
-      <Option value="4">Agree</Option>
-      <Option value="5">Strongly Agree</Option>
+      <Option value="1" image="depsad.png">Strongly Disagree </Option>
+      <Option value="2" image="sed.png">Disagree</Option>
+      <Option value="3" image="nu.png">Neutral</Option>
+      <Option value="4" image="hp.png">Agree</Option>
+      <Option value="5" image="happy.png">Strongly Agree</Option>
     </Options>
     <Question id="ESE1" type="likert-5">
       <Text>I am confident in my ability to successfully identify new business opportunities</Text>
@@ -168,11 +168,11 @@
   </Section>
   <Section id="6" name="Digital Competencies">
     <Options>
-      <Option value="1">Strongly Disagree</Option>
-      <Option value="2">Disagree</Option>
-      <Option value="3">Neutral</Option>
-      <Option value="4">Agree</Option>
-      <Option value="5">Strongly Agree</Option>
+      <Option value="1" image="scale_1.png">Strongly Disagree </Option>
+      <Option value="2" image="scale_2.png">Disagree</Option>
+      <Option value="3" image="scale_3.png">Neutral</Option>
+      <Option value="4" image="scale_4.png">Agree</Option>
+      <Option value="5" image="scale_5.png">Strongly Agree</Option>
     </Options>
     <Question id="IDL1" type="likert-5">
       <Text>I can identify and use appropriate sources in digital environments based on my information needs</Text>
